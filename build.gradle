@@ -1,0 +1,42 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    apply from: file('dependencies.gradle')
+    ext.kotlin_version = '1.7.10'
+    ext.android_plugin_version = '2.2.0-alpha4'
+    repositories {
+        // Make sure that you have the following two repositories
+        google()  // Google's Maven repository
+
+        mavenCentral()  // Maven Central repository
+
+        mavenLocal()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$android_plugin_version"
+        classpath 'com.android.tools.build:gradle:7.2.2'
+        // Add the dependency for the Google services Gradle plugin
+        classpath 'com.google.gms:google-services:4.3.13'
+        // Add google-services plugin (101)
+        classpath "com.google.gms:google-services:$googleServicesPluginVersion"
+
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        // Make sure that you have the following two repositories
+       // google()  // Google's Maven repository
+
+      //  mavenCentral()  // Maven Central repository
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
