@@ -11,7 +11,6 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:icon" gravity="center">@drawable/logo</item>
-        <item name="android:paddingTop">55dp</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:textColorHint">@android:color/white</item>
@@ -21,7 +20,6 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:padding">0dp</item>
         <item name="android:gravity">center_vertical</item>
     </style>
 
