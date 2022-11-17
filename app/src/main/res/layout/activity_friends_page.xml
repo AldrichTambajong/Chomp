@@ -31,27 +31,27 @@
         app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:srcCompat="@drawable/logo" />
 
     <LinearLayout
+        android:id="@+id/info_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="35dp"
         android:orientation="horizontal"
-        android:id="@+id/info_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/dataView">
+
         <LinearLayout
             android:id="@+id/friends_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
             android:background="@drawable/border"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/numFriends"
@@ -59,16 +59,20 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="12"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:visibility="invisible"
                 android:textSize="20dp">
 
             </TextView>
+
             <TextView
                 android:id="@+id/friendsText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Friends"
-                android:textSize="20dp"
-                android:gravity="center"></TextView>
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="20dp"></TextView>
 
         </LinearLayout>
 
@@ -77,16 +81,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@drawable/border">
+            android:background="@drawable/border"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/numCookbooks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="12"
-                android:textSize="20dp"
-                android:gravity="center">
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:visibility="invisible"
+                android:textSize="20dp">
 
             </TextView>
 
@@ -94,8 +100,9 @@
                 android:id="@+id/cookbookText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cookbooks"
                 android:gravity="center"
+                android:text="Cookbooks"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textSize="20dp">
 
             </TextView>
@@ -103,31 +110,47 @@
         </LinearLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/retrieve"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/dataView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="161dp"
-        android:text="Retrieve Data"
-        android:backgroundTint="#AE4D8B"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="38dp"
+        android:gravity="center"
+        android:text="Aldrich Tambajong"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/info_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/cookbookHeader"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="235dp"
+        android:text="Cookbooks:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/info_layout" />
 
     <TextView
-        android:id="@+id/dataView"
+        android:id="@+id/Recipes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="290dp"
-        android:text="TextView"
-        android:visibility="visible"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="305dp"
+        android:layout_marginBottom="140dp"
+        android:text="Recipes:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/retrieve" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

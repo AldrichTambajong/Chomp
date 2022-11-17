@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import org.w3c.dom.Text
 
 const val TAG = "FIRESTORE"
 class FriendsPage: AppCompatActivity() {
@@ -26,8 +27,9 @@ class FriendsPage: AppCompatActivity() {
 
         auth = Firebase.auth
 
-        val button = findViewById<Button>(R.id.retrieve)
         val dataView = findViewById<TextView>(R.id.dataView)
+        val friendsListView = findViewById<TextView>(R.id.numFriends)
+        val cookbooksListView = findViewById<TextView>(R.id.numCookbooks)
 
         val ref = firestoreDb.collection("Users")
         ref.get()
@@ -36,6 +38,12 @@ class FriendsPage: AppCompatActivity() {
                 for(document in it) {
                     if(document.id == auth.currentUser?.uid){
                         result.append(document.data.getValue("name"))
+
+                        friendsListView.text = (document.data.getValue("friends") as List<String>).size.toString()
+                        cookbooksListView.text = (document.data.getValue("cookbooks") as List<String>).size.toString()
+
+                        friendsListView.visibility = View.VISIBLE
+                        cookbooksListView.visibility = View.VISIBLE
                         Log.d(TAG, "${document.id} => ${document.data}")
                     }
                 }
@@ -45,23 +53,5 @@ class FriendsPage: AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents: ", exception)
             }
-
-//        button.setOnClickListener{
-//            val ref = firestoreDb.collection("Users")
-//            ref.get()
-//                .addOnSuccessListener{
-//                    val result: StringBuffer = StringBuffer()
-//                    for(document in it) {
-//                        result.append(document.data.getValue("firstName")).append(" ")
-//                            .append(document.data.getValue("lastName"))
-//                        Log.d(TAG, "${document.id} => ${document.data}")
-//                    }
-//                    dataView.text = result
-//                    dataView.visibility = View.VISIBLE
-//                }
-//                .addOnFailureListener { exception ->
-//                    Log.w(TAG, "Error getting documents: ", exception)
-//                }
-//        }
     }
 }
