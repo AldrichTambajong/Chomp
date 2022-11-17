@@ -57,6 +57,7 @@ class SignInActivity : AppCompatActivity() {
                 .build()
             signIn.launch(signInIntent)
         } else {
+            addToDb()
             goToMainActivity()
         }
     }
@@ -70,22 +71,7 @@ class SignInActivity : AppCompatActivity() {
         if (result.resultCode == RESULT_OK) {
             Log.d(TAG, "Sign in successful!")
 
-            val user = FirebaseAuth.getInstance().currentUser
-
-            if (user != null) {
-                val data = hashMapOf(
-                    "email" to user?.email,
-                    "name" to user?.displayName,
-                    "avatar" to ""
-                )
-
-                firestoreDb.collection("Users").document(user.uid)
-                    .set(data)
-                    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
-                    .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
-            }
-
-
+            addToDb()
             goToMainActivity()
         } else {
             Toast.makeText(
@@ -105,6 +91,26 @@ class SignInActivity : AppCompatActivity() {
     private fun goToMainActivity() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
+    }
+
+    private fun addToDb(){
+        val user = auth.currentUser
+
+        if (user != null) {
+            val data = hashMapOf(
+                "email" to user.email,
+                "name" to user.displayName,
+                "friends" to ArrayList<String>(),
+                "cookbooks" to ArrayList<String>(),
+                "recipes" to ArrayList<String>(),
+                "avatar" to ""
+            )
+
+            firestoreDb.collection("Users").document(user.uid)
+                .set(data)
+                .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+                .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+        }
     }
 
     companion object {
