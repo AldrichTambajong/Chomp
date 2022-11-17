@@ -14,6 +14,7 @@ import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.example.cookbook.databinding.ActivitySignInBinding
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class SignInActivity : AppCompatActivity() {
@@ -21,6 +22,7 @@ class SignInActivity : AppCompatActivity() {
 
     // Firebase instance variables
     private lateinit var auth: FirebaseAuth
+    val firestoreDb = FirebaseFirestore.getInstance()
 
     // moves the code on to the next steps after the authentication
     private val signIn: ActivityResultLauncher<Intent> =
@@ -53,7 +55,6 @@ class SignInActivity : AppCompatActivity() {
                     AuthUI.IdpConfig.GoogleBuilder().build(),
                 ))
                 .build()
-
             signIn.launch(signInIntent)
         } else {
             goToMainActivity()
@@ -68,6 +69,23 @@ class SignInActivity : AppCompatActivity() {
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
         if (result.resultCode == RESULT_OK) {
             Log.d(TAG, "Sign in successful!")
+
+            val user = FirebaseAuth.getInstance().currentUser
+
+            if (user != null) {
+                val data = hashMapOf(
+                    "email" to user?.email,
+                    "name" to user?.displayName,
+                    "avatar" to ""
+                )
+
+                firestoreDb.collection("Users").document(user.uid)
+                    .set(data)
+                    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+                    .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+            }
+
+
             goToMainActivity()
         } else {
             Toast.makeText(
