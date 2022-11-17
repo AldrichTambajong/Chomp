@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button
 import android.widget.ProgressBar;
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -55,6 +56,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
             return
+        }
+
+        binding.myButton.setOnClickListener{
+            val intent = Intent(this,FriendsPage::class.java)
+            startActivity(intent)
         }
     }
 
