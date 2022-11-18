@@ -28,7 +28,16 @@ public class ProfileFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView textView = binding.textProfile;
+        final TextView numFriends = binding.numFriends;
+        final TextView numCookbooks = binding.numCookbooks;
+
         profileViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        profileViewModel.getNumFriends().observe(getViewLifecycleOwner(),numFriends::setText);
+        profileViewModel.getNumCookbooks().observe(getViewLifecycleOwner(),numCookbooks::setText);
+
+        numFriends.setVisibility(View.VISIBLE);
+        numCookbooks.setVisibility(View.VISIBLE);
+
         return root;
     }
 
