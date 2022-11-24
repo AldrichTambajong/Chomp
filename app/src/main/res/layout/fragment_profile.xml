@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="12"
+                android:text=""
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:visibility="invisible"
                 android:textSize="20dp">
@@ -91,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="12"
+                android:text=""
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:visibility="invisible"
                 android:textSize="20dp">
@@ -125,6 +125,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/info_layout" />
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/Recipes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cookbookHeader">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cookbooksRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="horizontal" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/Recipes"
