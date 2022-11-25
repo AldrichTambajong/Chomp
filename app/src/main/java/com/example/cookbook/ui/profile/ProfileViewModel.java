@@ -1,5 +1,7 @@
 package com.example.cookbook.ui.profile;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -19,13 +21,17 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.ktx.Firebase;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class ProfileViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
     private final MutableLiveData<String> numFriends;
     private final MutableLiveData<String> numCookbooks;
+    private ArrayList<String> likedCookbooks;
     private StringBuffer sb = new StringBuffer();
     private FirebaseAuth auth = FirebaseAuth.getInstance();
     private FirebaseFirestore firestoreDb = FirebaseFirestore.getInstance();
@@ -44,9 +50,11 @@ public class ProfileViewModel extends ViewModel {
                         if(task.isSuccessful()){
                             for(QueryDocumentSnapshot document : task.getResult()){
                                 if(document.getId().equals(auth.getCurrentUser().getUid())){
+
                                     numFriends.setValue(Integer.toString(((List<String>)document.get("friends")).size()));
                                     numCookbooks.setValue(Integer.toString(((List<String>)document.get("cookbooks")).size()));
                                     mText.setValue(document.get("name").toString());
+                                    likedCookbooks = (ArrayList<String>) document.get("cookbooks");
                                 }
                             }
                         }
@@ -63,4 +71,5 @@ public class ProfileViewModel extends ViewModel {
     public LiveData<String> getNumCookbooks() {
         return numCookbooks;
     }
+    public ArrayList<String> getLikedCookbooks() {return likedCookbooks;}
 }
