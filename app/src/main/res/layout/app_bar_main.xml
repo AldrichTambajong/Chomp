@@ -15,26 +15,40 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="36dp"-->
+<!--        android:layout_gravity="bottom|end"-->
+<!--        android:layout_marginEnd="@dimen/fab_margin"-->
+<!--        android:layout_marginBottom="100dp"-->
+<!--        app:srcCompat="@drawable/note_add_icon" />-->
+
+
     <include
         android:id="@+id/include"
         layout="@layout/content_main" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@drawable/note_add_icon" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/floating_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="110dp"
         android:clickable="true"
+        android:focusable="true"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="bottom|right"
+        app:srcCompat="@drawable/ic_menu_camera" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="40dp"
+        android:clickable="true"
+        android:focusable="true"
         android:src="@drawable/add_icon"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|right" />
@@ -51,6 +65,18 @@
         app:popupTheme="@style/Theme.Cookbook.PopupOverlay"
         app:subtitleTextColor="@color/logoText"
         app:titleTextColor="@color/logoText" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_ocr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="180dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="bottom|right"
+        app:srcCompat="@drawable/note_add_icon" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

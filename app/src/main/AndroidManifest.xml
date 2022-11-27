@@ -4,6 +4,16 @@
     package="com.example.cookbook">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -12,28 +22,56 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cookbook">
-
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="ocr" />
+        <activity
+            android:name=".ScanForRecipe"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ScanRecipeText"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".DetailActivity"
             android:exported="false" />
-
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.Cookbook.NoActionBar"/>
+            android:theme="@style/Theme.Cookbook.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
-            android:theme="@style/SplashTheme"
-            android:exported="true">
-
-        <intent-filter>
+            android:exported="true"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".SignInActivity" />
-        <activity android:name=".FriendsPage"/>
+        <activity android:name=".FriendsPage" />
+<!--        <activity android:name="com.canhub.cropper.CropImageActivity" />-->
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.cookbook.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

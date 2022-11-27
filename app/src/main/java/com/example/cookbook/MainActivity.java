@@ -49,11 +49,26 @@ public class MainActivity extends AppCompatActivity {
         getUserProfile();
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
+//        setSupportActionBar(binding.appBarMain.floatingCamera);
+        binding.appBarMain.floatingCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                System.out.println("Trigger Camera Activity");
+                Intent intent = new Intent(MainActivity.this, ScanForRecipe.class);
+                startActivity(intent);
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+            }
+        });
+
+        binding.appBarMain.floatingOcr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("Trigger OCR Activity");
+                Intent intent = new Intent(MainActivity.this, ScanRecipeText.class);
+                startActivity(intent);
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -88,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        System.out.println(item);
         switch (item.getItemId()) {
             case R.id.action_settings:
                 // User chose the "Settings" item, show the app settings UI...

@@ -14,7 +14,7 @@
         <item name="android:adjustViewBounds">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:textColorHint">@color/logoColor</item>
+        <item name="android:textColorHint">@color/logoText</item>
         <item name="android:paddingTop">15dp</item>
     </style>
 
@@ -126,5 +126,8 @@
         <item name="android:paddingTop">0dp</item>
     </style>
 
-    <style name="AppTheme">AppTheme</style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="titleTextColor">@color/logoText</item>
+
+    </style>
 </resources>
