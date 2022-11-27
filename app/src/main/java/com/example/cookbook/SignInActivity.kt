@@ -71,9 +71,9 @@ class SignInActivity : AppCompatActivity() {
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
         if (result.resultCode == RESULT_OK) {
             Log.d(TAG, "Sign in successful!")
-
             addToDb()
             goToMainActivity()
+
         } else {
             Toast.makeText(
                 this,
@@ -98,19 +98,35 @@ class SignInActivity : AppCompatActivity() {
         val user = auth.currentUser
 
         if (user != null) {
-            val data = hashMapOf(
-                "email" to user.email,
-                "name" to user.displayName,
-                "friends" to ArrayList<String>(),
-                "cookbooks" to ArrayList<String>(),
-                "recipes" to ArrayList<String>(),
-                "avatar" to ""
-            )
+            firestoreDb.collection("Users").document(user.uid).get()
+                .addOnCompleteListener{
+                    if(it.isSuccessful){
+                        val doc = it.result
+                        if(doc != null){
+                            if(doc.exists()){
+                                Log.d("TAG", "Document already exists.")
+                            }
+                            else{
+                                Log.d("TAG", "Document does not exist.")
+                                val data = hashMapOf(
+                                    "email" to user.email,
+                                    "name" to user.displayName,
+                                    "friends" to ArrayList<String>(),
+                                    "cookbooks" to ArrayList<String>(),
+                                    "recipes" to ArrayList<String>(),
+                                    "avatar" to ""
+                                )
 
-            firestoreDb.collection("Users").document(user.uid)
-                .set(data)
-                .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
-                .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+                                firestoreDb.collection("Users").document(user.uid)
+                                    .set(data)
+                                    .addOnSuccessListener {
+                                        Log.d(SignInActivity.TAG, "DocumentSnapshot successfully written!")
+                                    }
+                                    .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+                            }
+                        }
+                    }
+                }
         }
     }
 

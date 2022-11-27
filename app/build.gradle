@@ -65,6 +65,7 @@ dependencies {
     //Target the latest platform features and APIs while also supporting older devices.
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
 
     // Google
     implementation 'com.google.android.gms:play-services-auth:20.3.0'
@@ -120,4 +121,6 @@ dependencies {
     implementation "com.vanniktech:android-image-cropper:4.5.0"
     implementation 'com.google.android.gms:play-services-mlkit-text-recognition:18.0.2'
 
+    //image loading
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
