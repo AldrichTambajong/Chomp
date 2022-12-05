@@ -59,6 +59,8 @@ public class RecipeAddForm extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipe_add_form, container, false);
+        final View rootview = inflater.inflate(R.layout.fragment_recipe_add_form, container, false);
+
+        return rootview;
     }
 }
