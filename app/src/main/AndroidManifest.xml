@@ -5,9 +5,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <queries>
         <intent>
@@ -22,9 +21,14 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cookbook">
+        <activity
+            android:name=".RecipeAddForm"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />
+
         <activity
             android:name=".ScanForRecipe"
             android:exported="false"
@@ -60,9 +64,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignInActivity" />
-        <activity android:name=".FriendsPage" />
-<!--        <activity android:name="com.canhub.cropper.CropImageActivity" />-->
-
+        <activity android:name=".FriendsPage" /> <!-- <activity android:name="com.canhub.cropper.CropImageActivity" /> -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.cookbook.fileprovider"

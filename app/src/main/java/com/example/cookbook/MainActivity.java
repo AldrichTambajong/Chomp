@@ -71,6 +71,15 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
             }
         });
+
+        binding.appBarMain.floatingAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Trigger Manual Recipe Add Activity");
+                Intent intent = new Intent(MainActivity.this,RecipeAddForm.class);
+                startActivity(intent);
+            }
+        });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
