@@ -1,30 +1,19 @@
 package com.example.cookbook
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import android.provider.MediaStore
-import android.view.View
+import android.util.Base64
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
-import com.canhub.cropper.CropImageContract
-import com.canhub.cropper.CropImageView
-import com.example.cookbook.databinding.ActivityMainBinding
-import com.example.cookbook.databinding.ActivityScanRecipeTextBinding
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import java.io.ByteArrayOutputStream
 
 class ScanRecipeText : AppCompatActivity() {
 
@@ -32,6 +21,7 @@ class ScanRecipeText : AppCompatActivity() {
 
 //    lateinit var binding: ActivityScanRecipeTextBinding
     private lateinit var captureButton: Button
+    private lateinit var saveButton: Button
     private lateinit var imageView: ImageView
     private lateinit var textData: TextView
     private val REQUEST_IMAGE_CAPTURE = 1
@@ -47,6 +37,7 @@ class ScanRecipeText : AppCompatActivity() {
         setContentView(R.layout.activity_scan_recipe_text)
 
         captureButton = findViewById(R.id.button_capture)
+        saveButton = findViewById(R.id.button_save)
         imageView = findViewById(R.id.image_view)
         textData = findViewById(R.id.text_data)
 
@@ -56,6 +47,11 @@ class ScanRecipeText : AppCompatActivity() {
 
         captureButton.setOnClickListener {
             processImage()
+        }
+
+        saveButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
     }
@@ -89,9 +85,20 @@ class ScanRecipeText : AppCompatActivity() {
                 "\n" +
                 "combine. If making in advance, refrigerate the components separately; bring the\n" +
                 "dressing to room temperature before serving.\n"
+
+
         imageBitmap = BitmapFactory.decodeResource(resources, R.drawable.text_detection, BitmapFactory.Options().apply {
             inMutable = true
         })
+        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.text_detection)
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+        val imageBytes: ByteArray = byteArrayOutputStream.toByteArray()
+        val imageString: String = Base64.encodeToString(imageBytes, Base64.DEFAULT)
+        val values = mapOf("recipe_name" to "Homemade Italian Dressing", "image" to imageString)
+        System.out.println(values);
+
+        System.out.println(values);
         System.out.println("Text Detection");
         if (imageBitmap != null) {
             val image = imageBitmap?.let {
