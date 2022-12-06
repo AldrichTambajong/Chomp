@@ -49,6 +49,7 @@ public class RecipeAddForm extends AppCompatActivity {
         Map<String,Object> data = new HashMap<>();
         data.put("ingredients",ingredientsInput.getText().toString());
         data.put("instructions", instructionInput.getText().toString());
+        data.put("url","");
 
         firestoreDb.collection("Users").document(auth.getCurrentUser().getUid())
                 .update("recipes", FieldValue.arrayUnion(nameInput.getText().toString()));
