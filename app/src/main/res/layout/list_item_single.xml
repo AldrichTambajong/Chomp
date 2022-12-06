@@ -28,7 +28,8 @@
             android:layout_alignParentBottom="true"
             android:gravity="center"
             android:text="Recipe Name"
-            android:textSize="32dp">
+            android:textSize="32dp"
+            app:fontFamily="@font/commissioner">
 
         </TextView>
     </LinearLayout>

@@ -26,6 +26,7 @@
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/drawable/side_nav_bar.xml" value="0.176" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/drawable/splash_background.xml" value="0.1095" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/activity_detail.xml" value="0.27447916666666666" />
+        <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/activity_friends_page.xml" value="0.1334853090172239" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/activity_main2.xml" value="0.27447916666666666" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/activity_main_drawer.xml" value="0.2151268115942029" />
@@ -33,11 +34,15 @@
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/activity_splash_screen.xml" value="0.12604166666666666" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/app_bar_main.xml" value="0.2" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/content_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/cookbook_item.xml" value="0.27447916666666666" />
+        <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/fragment_cookbooks.xml" value="0.1334853090172239" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/fragment_gallery.xml" value="0.2658514492753623" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/fragment_home.xml" value="0.2151268115942029" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/fragment_liked_recipes.xml" value="0.1" />
+        <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/fragment_slideshow.xml" value="0.1334853090172239" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/list_item.xml" value="0.1" />
+        <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/list_item_single.xml" value="0.1539855072463768" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/nav_header_main.xml" value="0.2151268115942029" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/plain_preview.xml" value="0.1098579782790309" />
         <entry key="..\:/MobileAppDev/CookbookApp/Cookbook/app/src/main/res/layout/preview_options.xml" value="0.13272543059777103" />

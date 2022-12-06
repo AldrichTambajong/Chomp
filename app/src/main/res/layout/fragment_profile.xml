@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorTitle"
     tools:context=".ui.profile.ProfileFragment">
 
     <ImageView
@@ -29,7 +30,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="436dp"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="25sp"
+        app:fontFamily="@font/commissioner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -74,7 +77,8 @@
                 android:gravity="center"
                 android:text="Friends"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textSize="20dp"></TextView>
+                android:textSize="20dp"
+                app:fontFamily="@font/commissioner"></TextView>
 
         </LinearLayout>
 
@@ -105,7 +109,8 @@
                 android:gravity="center"
                 android:text="Cookbooks"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textSize="20dp">
+                android:textSize="20dp"
+                app:fontFamily="@font/commissioner">
 
             </TextView>
 
@@ -114,14 +119,14 @@
 
     <TextView
         android:id="@+id/cookbookHeader"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="0dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="235dp"
-        android:text="Cookbooks:"
+        android:text=" My Cookbooks:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="24dp"
+        app:fontFamily="@font/commissioner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/info_layout" />
@@ -138,17 +143,20 @@
 
     <TextView
         android:id="@+id/Recipes"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="305dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="200dp"
         android:layout_marginBottom="140dp"
-        android:text="Recipes:"
+        android:text=" My Recipes:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="24dp"
+        app:fontFamily="@font/commissioner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cookbooksRecycler" />
     <LinearLayout
         android:layout_width="409dp"
         android:layout_height="108dp"

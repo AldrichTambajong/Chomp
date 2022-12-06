@@ -2,9 +2,9 @@
 <resources>
     <color name="colorPrimary">#9f806a</color>
     <color name="colorPrimaryDark">#826144</color>
-    <color name="colorAccent">#f1f6f4</color>
-    <color name="lighterAccent">#e7efea</color>
-    <color name="colorTitle">#ffffff</color>
+    <color name="colorAccent">#b29987</color>
+    <color name="lighterAccent">#b29987</color>
+    <color name="colorTitle">#F6F4F1</color>
     <color name="darkestBrown">#5e3c1d</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
