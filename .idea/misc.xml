@@ -65,10 +65,12 @@
         <entry key="app/src/main/res/layout/content_main.xml" value="0.23311920166015626" />
         <entry key="app/src/main/res/layout/cookbook_item.xml" value="0.35992736816406257" />
         <entry key="app/src/main/res/layout/fragment_cookbooks.xml" value="0.20885416666666667" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.20885416666666667" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_liked_recipes.xml" value="0.20885416666666667" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.36130371093749997" />
         <entry key="app/src/main/res/layout/fragment_recipe_add_form.xml" value="0.13425925925925927" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.20885416666666667" />
+        <entry key="app/src/main/res/layout/list_item_single.xml" value="0.1" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.20885416666666667" />
         <entry key="app/src/main/res/layout/signin_custom_layout.xml" value="0.2212962962962963" />
       </map>
