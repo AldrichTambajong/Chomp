@@ -54,6 +54,7 @@
         <entry key="app/src/main/res/drawable/avatar_sample.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/border.xml" value="0.232" />
         <entry key="app/src/main/res/drawable/edit_text_shadow.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/icons/drawable/ic_baseline_done_24.xml" value="0.1025" />
         <entry key="app/src/main/res/drawable/outline_send_gray_24.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.20885416666666667" />
         <entry key="app/src/main/res/layout/activity_friends_page.xml" value="0.1" />
