@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.cookbook.R;
 import com.squareup.picasso.Picasso;
 
@@ -36,6 +37,9 @@ public class RecyclerViewHolder extends RecyclerView.Adapter<RecyclerViewHolder.
     @Override
     public void onBindViewHolder(@NonNull Item holder, int position) {
         holder.name.setText(names.get(position));
+        Glide.with(context)
+                .load(R.drawable.logo)
+                .into(holder.link);
     }
 
     @Override
