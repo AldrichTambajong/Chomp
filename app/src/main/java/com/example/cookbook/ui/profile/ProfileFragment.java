@@ -55,7 +55,6 @@ public class ProfileFragment extends Fragment {
         final TextView textView = binding.textProfile;
         final TextView numFriends = binding.numFriends;
         final TextView numCookbooks = binding.numCookbooks;
-        TextView textView3 = binding.cookbookHeader;
         rv = binding.cookbooksRecycler;
 
         CollectionReference ref = firestoreDb.collection("Users");
