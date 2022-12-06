@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -39,7 +40,9 @@ public class ProfileFragment extends Fragment {
     private ArrayList<String> list;
     private ArrayList<String> cookbookNames = new ArrayList<String>();
     private ArrayList<String> cookbookImgs = new ArrayList<String>();
+    private ArrayList<String> recipeNames = new ArrayList<String>();
     private RecyclerView rv;
+    private RecyclerView recipesRV;
     private FirebaseAuth auth = FirebaseAuth.getInstance();
     private FirebaseFirestore firestoreDb = FirebaseFirestore.getInstance();
 
@@ -56,6 +59,7 @@ public class ProfileFragment extends Fragment {
         final TextView numFriends = binding.numFriends;
         final TextView numCookbooks = binding.numCookbooks;
         rv = binding.cookbooksRecycler;
+        recipesRV = binding.recipesRecycler;
 
         CollectionReference ref = firestoreDb.collection("Users");
         ref.get()
@@ -66,6 +70,7 @@ public class ProfileFragment extends Fragment {
                             for(QueryDocumentSnapshot document : task.getResult()){
                                 if(document.getId().equals(auth.getCurrentUser().getUid())){
                                     list = (ArrayList<String>) document.get("cookbooks");
+                                    recipeNames = (ArrayList<String>) document.get("recipes");
 
                                     firestoreDb.collection("Cookbooks").get()
                                             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -80,10 +85,14 @@ public class ProfileFragment extends Fragment {
                                                         }
                                                         //init recycler
                                                         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+                                                        LinearLayoutManager llmRecipes = new LinearLayoutManager(getActivity());
+                                                        llmRecipes.setOrientation(LinearLayoutManager.HORIZONTAL);
                                                         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
                                                         rv.setLayoutManager(llm);
+                                                        recipesRV.setLayoutManager(llmRecipes);
 //                                                        rv.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL,false));
                                                         rv.setAdapter(new RecyclerViewHolder(cookbookNames, cookbookImgs,getActivity()));
+                                                        recipesRV.setAdapter(new RecyclerViewHolder(recipeNames, cookbookImgs,getActivity()));;
                                                     }
                                                 }
                                             });
@@ -93,7 +102,6 @@ public class ProfileFragment extends Fragment {
                         }
                     }
                 });
-
         profileViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         profileViewModel.getNumFriends().observe(getViewLifecycleOwner(),numFriends::setText);
         profileViewModel.getNumCookbooks().observe(getViewLifecycleOwner(),numCookbooks::setText);
