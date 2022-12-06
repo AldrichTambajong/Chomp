@@ -5,7 +5,6 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.*
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -14,6 +13,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.exifinterface.media.ExifInterface
 import androidx.lifecycle.lifecycleScope
@@ -65,6 +65,7 @@ class ScanForRecipe : AppCompatActivity(), View.OnClickListener {
         tvPlaceholder = findViewById(R.id.tvPlaceholder)
 
         captureImageFab.setOnClickListener(this)
+        captureImageFab2.setOnClickListener(this)
         imgSampleOne.setOnClickListener(this)
         imgSampleTwo.setOnClickListener(this)
         imgSampleThree.setOnClickListener(this)
@@ -86,6 +87,7 @@ class ScanForRecipe : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.captureImageFab -> {
+                System.out.println("here1")
                 try {
                     dispatchTakePictureIntent()
                 } catch (e: ActivityNotFoundException) {
@@ -100,6 +102,11 @@ class ScanForRecipe : AppCompatActivity(), View.OnClickListener {
             }
             R.id.imgSampleThree -> {
                 setViewAndDetect(getSampleImage(R.drawable.img_meal_three))
+            }
+            R.id.captureImageFab2 -> {
+                System.out.println("here2")
+                val intent = Intent(this, IngredientsList::class.java)
+                startActivity(intent)
             }
         }
     }

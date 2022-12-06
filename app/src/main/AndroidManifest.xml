@@ -22,13 +22,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cookbook">
         <activity
-            android:name=".RecipeAddForm"
-            android:exported="false" />
+            android:name=".IngredientsList"
+            android:exported="false"
+            android:parentActivityName=".ScanForRecipe">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />
-
+        <activity
+            android:name=".RecipeAddForm"
+            android:exported="false" />
         <activity
             android:name=".ScanForRecipe"
             android:exported="false"

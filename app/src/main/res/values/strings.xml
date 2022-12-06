@@ -38,6 +38,7 @@
     <string name="save"> Save</string>
     <string name="next"> Next</string>
     <string name="capture_text">Capture or choose and image from gallery to get recipe</string>
+    <string name="done">done</string>
 
 
     <string-array name="recipe_titles">
