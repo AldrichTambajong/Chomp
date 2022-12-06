@@ -10,17 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.cookbook.R;
 import com.example.cookbook.ui.profile.RecyclerViewHolder;
 
 import java.util.ArrayList;
 
 public class RecipesRecyclerViewHolder extends RecyclerView.Adapter<RecipesRecyclerViewHolder.RecipesItem>{
-    private String[] names;
+    private ArrayList<String> names;
     private Context context;
-    private Integer[] images;
+    private ArrayList<String> images;
 
-    public RecipesRecyclerViewHolder(String[] names, Integer[] images, Context context){
+    public RecipesRecyclerViewHolder(ArrayList<String> names, ArrayList<String> images, Context context){
         this.names = names;
         this.images = images;
         this.context = context;
@@ -34,13 +35,15 @@ public class RecipesRecyclerViewHolder extends RecyclerView.Adapter<RecipesRecyc
 
     @Override
     public void onBindViewHolder(@NonNull RecipesItem holder, int position) {
-     holder.name.setText(names[position]);
-     holder.link.setImageResource(images[position]);
+     holder.name.setText(names.get(position));
+     Glide.with(context)
+             .load(images.get(position))
+             .into(holder.link);
     }
 
     @Override
     public int getItemCount() {
-        return names.length;
+        return names.size();
     }
 
     public class RecipesItem extends RecyclerView.ViewHolder{
